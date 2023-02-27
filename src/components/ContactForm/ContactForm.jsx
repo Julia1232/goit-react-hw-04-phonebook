@@ -22,7 +22,7 @@ export default class ContactForm extends Component {
 
     this.setState({ name: "", number: "" });
   };
-  
+
   render() {
     return (
       <form className={styles.TaskEditor} onSubmit={this.handleSubmit}>
@@ -49,6 +49,8 @@ export default class ContactForm extends Component {
         <button className={styles.TaskEditor_button} type="submit">
           Add contact
         </button>
+
+        
       </form>
     );
   }
