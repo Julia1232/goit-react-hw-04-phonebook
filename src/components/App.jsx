@@ -23,6 +23,7 @@ export default class App extends Component {
 
     if (searchSameName) {
       alert(`${task.name} is already in contacts`);
+      Event.preventDefault();
     } else if (task.name.length === 0) {
       alert("Fields must be filled!");
     } else {
@@ -67,10 +68,11 @@ export default class App extends Component {
         <h1>Phonebook</h1>
 
         <ContactForm onAddContact={this.addContact} />
+
         <h2>Contacts</h2>
-        {visibleContacts.length > 1 && (
           <Filter value={filter} onChangeFilter={this.changeFilter} />
-        )}
+       
+        
         {visibleContacts.length > 0 && (
           <ContactList
             contacts={visibleContacts}

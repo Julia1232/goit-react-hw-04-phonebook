@@ -50,7 +50,7 @@ export default class ContactForm extends Component {
           Add contact
         </button>
 
-        
+
       </form>
     );
   }
@@ -58,6 +58,4 @@ export default class ContactForm extends Component {
 
 ContactForm.propTypes = {
   onAddContact: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
 };
