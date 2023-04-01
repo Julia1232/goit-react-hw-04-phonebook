@@ -3,25 +3,33 @@ import styles from './ContactForm.module.css';
 import { useState } from 'react';
 
 export default function ContactForm({ onAddContact }) {
-  const [state, setState] = useState({
-    name: '',
-    number: '',
-  });
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
 
-  const handleChange = e => {
-    const { name, value } = e.target;
-    setState({
-      ...state,
-      [name]: value,
-    });
-  };
+  function handleChange(e) {
+    const { name, value } = e.currentTarget;
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+      case 'number':
+        setNumber(value);
+        break;
 
-  const handleSubmit = e => {
+      default:
+        break;
+    }
+  }
+
+  function handleSubmit(e) {
     e.preventDefault();
-    onAddContact({ ...state });
-    state.name = '';
-    state.number = '';
-  };
+    const contact = { name: name, number: number };
+
+    onAddContact(contact);
+
+    setName('');
+    setNumber('');
+  }
 
   return (
     <form className={styles.TaskEditor} onSubmit={handleSubmit}>
@@ -31,7 +39,7 @@ export default function ContactForm({ onAddContact }) {
           className={styles.TaskEditor_input}
           type="text"
           name="name"
-          value={state.name}
+          value={name}
           onChange={handleChange}
         />
       </label>
@@ -41,7 +49,7 @@ export default function ContactForm({ onAddContact }) {
           className={styles.TaskEditor_input}
           type="text"
           name="number"
-          value={state.number}
+          value={number}
           onChange={handleChange}
         />
       </label>
